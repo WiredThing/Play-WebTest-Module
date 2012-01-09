@@ -5,9 +5,13 @@ import org.openqa.selenium.WebDriver;
 public class LoginScreen extends Screen {
 
     public LoginScreen(WebDriver driver) {
+        this(driver, "Login");
+    }
+
+    public LoginScreen(WebDriver driver, String title) {
         super(driver);
         open("/login");
-        assertEquals("Login", driver.getTitle());
+        assertEquals(title, driver.getTitle());
     }
 
     public Screen login(String user, String password) {

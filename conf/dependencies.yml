@@ -19,7 +19,7 @@ require:
     - nekohtml 1.9.14
     - protobuf-java 2.3.0
     - sac 1.3
-    - selenium-java 2.3.0
+    - selenium-java 2.16.1
     - serializer 2.7.1
     - testng 6.0.1-nobsh-noguice
     - webdriver-opera v0.5.2

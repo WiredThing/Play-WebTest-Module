@@ -50,7 +50,7 @@ public abstract class WebTest {
             }
             // driver = new ChromeDriver();
             // driver = new FirefoxDriver();
-            driver = new HtmlUnitDriver();
+            driver = new HtmlUnitDriver(true);
         }
     }
 
