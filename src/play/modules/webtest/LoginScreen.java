@@ -5,13 +5,16 @@ import org.openqa.selenium.WebDriver;
 public class LoginScreen extends Screen {
 
     public LoginScreen(WebDriver driver) {
-        this(driver, "Login");
+        this(driver, null);
     }
 
     public LoginScreen(WebDriver driver, String title) {
         super(driver);
         open("/login");
-        assertEquals(title, driver.getTitle());
+
+        if (title != null) {
+            assertEquals(title, driver.getTitle());
+        }
     }
 
     public Screen login(String user, String password) {
@@ -19,7 +22,21 @@ public class LoginScreen extends Screen {
         findByCss("#password").sendKeys(password);
         findByCss("#signin").click();
 
-        assertElementDoesNotHaveText("#login .error", "Oops, unknown username or password.");
+        assertElementIsHidden("#login .error");
+
+        return this;
+    }
+    
+    public Screen loginAndExpectError(String user, String password, String error) {
+        findByCss("#username").sendKeys(user);
+        findByCss("#password").sendKeys(password);
+        findByCss("#signin").click();
+
+        assertElementIsVisible("#login .error");
+
+        if (error != null) {
+            assertElementHasText("#login .error", error);
+        }
 
         return this;
     }

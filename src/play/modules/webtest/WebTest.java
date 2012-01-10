@@ -86,6 +86,10 @@ public abstract class WebTest {
     protected void loginAs(String user, String password) {
         new LoginScreen(driver).login(user, password);
     }
+    
+    protected void loginAs(String user, String password, String title) {
+        new LoginScreen(driver, title).login(user, password);
+    }
 
     public enum StartPlay implements MethodRule {
 
