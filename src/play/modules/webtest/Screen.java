@@ -42,6 +42,20 @@ public abstract class Screen {
         }
     }
 
+    protected void assertElementDoesNotHaveValue(String cssSelector, String value) {
+        try {
+            String elementValue = findByCss(cssSelector).getAttribute(value);
+            Assert.assertFalse("Element '" + cssSelector + "' has value '" + elementValue + "' but expected it to not have value '" + value + "'", elementValue.equals(value));
+        } catch (NoSuchElementException e) {
+            // OK, if it's not present then it doesn't have the value
+        }
+    }
+
+    protected void assertElementHasValue(String cssSelector, String value) {
+        String elementValue = findByCss(cssSelector).getAttribute("value");
+        Assert.assertTrue("Element '" + cssSelector + "' has value '" + elementValue + "' but expected it to have value '" + value + "'", elementValue.equals(value));
+    }
+    
     protected void assertElementDoesNotHaveText(String cssSelector, String text) {
         try {
             String elementText = findByCss(cssSelector).getText();
@@ -122,6 +136,15 @@ public abstract class Screen {
             Assert.assertFalse("Expected '" + cssSelector + "' to be unselected, but was selected", findByCss(cssSelector).isSelected());
         } catch (NoSuchElementException e) {
             // OK, if it's not present then it doesn't have the text
+        }
+    }
+    
+    protected boolean elementCanBeFound(String cssSelector) {
+        try {
+            findByCss(cssSelector);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
         }
     }
 
