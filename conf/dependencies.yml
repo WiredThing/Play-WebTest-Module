@@ -1,4 +1,4 @@
-self: play -> webtest 0.4
+self: play -> webtest 0.5
 
 require:
     - play 1.2.2
@@ -23,6 +23,6 @@ require:
     - serializer 2.7.1
     - testng 6.0.1-nobsh-noguice
     - webdriver-opera v0.5.2
-    - xalan 2.7.1
+    - xalan 2.7.4
     - xercesimpl 2.9.1
     - xml-apis 1.3.04

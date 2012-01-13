@@ -6,6 +6,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public abstract class Screen {
 
     protected WebDriver driver;
@@ -157,5 +159,19 @@ public abstract class Screen {
 
     protected WebElement findByCss(String cssSelector) {
         return driver.findElement(By.cssSelector(cssSelector));
+    }
+
+    protected List<WebElement> findAllByCss(String cssSelector) {
+        return driver.findElements(By.cssSelector(cssSelector));
+    }
+
+    protected void typeInto(String cssSelector, String text) {
+        findByCss(cssSelector).sendKeys(text);
+    }
+
+    protected void typeValue(String cssSelector, String text) {
+        WebElement element = findByCss(cssSelector);
+        element.clear();
+        element.sendKeys(text);
     }
 }

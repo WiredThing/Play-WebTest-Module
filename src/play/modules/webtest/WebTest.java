@@ -29,10 +29,10 @@ public abstract class WebTest {
 
     @BeforeClass
     public static void startDriver() {
-        httpPort = "9000";
-        httpsPort = "9001";
+        httpPort = "9090";
+        httpsPort = "9091";
 
-        if (portInUse(9000)) {
+        if (portInUse(9090) || portInUse(9091)) {
             httpPort = "9500";
             httpsPort = "9501";
         } else {
